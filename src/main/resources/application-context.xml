@@ -18,4 +18,14 @@
         <property name="jobRepository" ref="jobRepository" />
     </bean>
 
+    <context:property-placeholder location="classpath*:mail-scheduler.properties" />
+
+    <context:annotation-config />
+
+    <bean id="templateConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+        <property name="templateLoaderPath" value="/templates" />
+    </bean>
+
+
+
 </beans>

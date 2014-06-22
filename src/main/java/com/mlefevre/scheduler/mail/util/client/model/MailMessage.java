@@ -1,4 +1,4 @@
-package com.mlefevre.scheduler.mail.util.client;
+package com.mlefevre.scheduler.mail.util.client.model;
 
 import java.io.File;
 import java.util.ArrayList;

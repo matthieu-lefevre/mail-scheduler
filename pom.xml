@@ -7,11 +7,12 @@
     <groupId>com.mlefevre</groupId>
     <artifactId>mail-scheduler</artifactId>
     <packaging>jar</packaging>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>mail-scheduler</name>
 
     <!-- PROJECT PROPERTIES -->
     <properties>
+        <project.build.folder>${project.build.directory}/${name}/${version}</project.build.folder>
         <project-encoding>UTF-8</project-encoding>
         <java.version>1.6</java.version>
         <main.class>com.mlefevre.scheduler.mail.App</main.class>
@@ -82,12 +83,6 @@
 
 
         <!-- LOGGER -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-
 
         <!-- TEST -->
         <dependency>
@@ -96,6 +91,14 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- TEMPLATING -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -121,7 +124,7 @@
                 <version>2.4</version>
                 <configuration>
                     <finalName>${name}-${version}</finalName>
-                    <outputDirectory>${project.build.directory}/${name}</outputDirectory>
+                    <outputDirectory>${project.build.folder}/</outputDirectory>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
@@ -151,7 +154,7 @@
                             <excludeDefaultDirectories>true</excludeDefaultDirectories>
                             <filesets>
                                 <fileset>
-                                    <directory>${project.build.directory}/${name}/</directory>
+                                    <directory>${project.build.folder}/</directory>
                                     <includes>
                                         <include>*</include>
                                     </includes>
@@ -177,7 +180,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${name}/libs/</outputDirectory>
+                            <outputDirectory>${project.build.folder}/libs/</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

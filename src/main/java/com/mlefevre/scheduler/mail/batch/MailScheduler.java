@@ -1,4 +1,4 @@
-package com.mlefevre.scheduler.mail;
+package com.mlefevre.scheduler.mail.batch;
 
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;

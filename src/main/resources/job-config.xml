@@ -10,19 +10,19 @@
 
     <import resource="classpath:application-context.xml" />
 
-    <bean id="printTasklet" class="com.mlefevre.scheduler.mail.PrintTasklet" />
+    <bean id="emailSenderTasklet" class="com.mlefevre.scheduler.mail.batch.EmailSenderTasklet" />
 
     <batch:job id="job">
         <batch:step id="step1">
-            <batch:tasklet ref="printTasklet" />
+            <batch:tasklet ref="emailSenderTasklet" />
         </batch:step>
     </batch:job>
 
 
-    <bean id="mailScheduler" class="com.mlefevre.scheduler.mail.MailScheduler" />
+    <bean id="mailScheduler" class="com.mlefevre.scheduler.mail.batch.MailScheduler" />
 
     <task:scheduled-tasks>
-        <task:scheduled ref="mailScheduler" method="run" fixed-delay="5000" />
+        <task:scheduled ref="mailScheduler" method="run" fixed-delay="60000" />
     </task:scheduled-tasks>
 
 </beans>
