@@ -1,11 +1,9 @@
 package com.mlefevre.scheduler.mail.service;
 
-import freemarker.template.TemplateException;
-
-import java.io.IOException;
+import com.mlefevre.scheduler.mail.model.Report;
 
 public interface ReportService {
 
-    String buildReport() throws IOException, TemplateException;
+    Report buildReport();
 
 }

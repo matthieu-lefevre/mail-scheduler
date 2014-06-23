@@ -10,11 +10,15 @@
 
     <import resource="classpath:application-context.xml" />
 
-    <bean id="emailSenderTasklet" class="com.mlefevre.scheduler.mail.batch.EmailSenderTasklet" />
+    <bean id="databaseReportReader" class="com.mlefevre.scheduler.mail.batch.DatabaseReportReader" />
+    <bean id="reportProcessor" class="com.mlefevre.scheduler.mail.batch.ReportProcessor" />
+    <bean id="mailReportWriter" class="com.mlefevre.scheduler.mail.batch.MailReportWriter" />
 
     <batch:job id="job">
         <batch:step id="step1">
-            <batch:tasklet ref="emailSenderTasklet" />
+            <batch:tasklet>
+                <batch:chunk reader="databaseReportReader" processor="reportProcessor" writer="mailReportWriter" commit-interval="10" />
+            </batch:tasklet>
         </batch:step>
     </batch:job>
 
@@ -22,7 +26,7 @@
     <bean id="mailScheduler" class="com.mlefevre.scheduler.mail.batch.MailScheduler" />
 
     <task:scheduled-tasks>
-        <task:scheduled ref="mailScheduler" method="run" fixed-delay="60000" />
+        <task:scheduled ref="mailScheduler" method="run" cron="0 49 23 * * *" />
     </task:scheduled-tasks>
 
 </beans>
