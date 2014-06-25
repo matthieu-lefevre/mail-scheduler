@@ -18,7 +18,7 @@
         <property name="jobRepository" ref="jobRepository" />
     </bean>
 
-    <context:property-placeholder location="classpath*:mail-scheduler.properties" />
+    <context:property-placeholder location="classpath*:properties/mail-scheduler.properties" />
 
     <context:annotation-config />
 
